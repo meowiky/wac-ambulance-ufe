@@ -7,12 +7,10 @@ describe('vikyb-ambulance-wl-list', () => {
       components: [VikybAmbulanceWlList],
       html: `<vikyb-ambulance-wl-list></vikyb-ambulance-wl-list>`,
     });
-    expect(page.root).toEqualHtml(`
-      <vikyb-ambulance-wl-list>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </vikyb-ambulance-wl-list>
-    `);
+      const wlList = page.rootInstance as VikybAmbulanceWlList;
+      const expectedPatients = wlList?.waitingPatients?.length
+
+      const items = page.root.shadowRoot.querySelectorAll("md-list-item");
+      expect(items.length).toEqual(expectedPatients);
   });
 });
