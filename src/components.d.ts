@@ -6,6 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface VikybAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath": string;
+    }
     interface VikybAmbulanceWlEditor {
         "entryId": string;
     }
@@ -16,7 +22,17 @@ export interface VikybAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVikybAmbulanceWlEditorElement;
 }
+export interface VikybAmbulanceWlListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVikybAmbulanceWlListElement;
+}
 declare global {
+    interface HTMLVikybAmbulanceWlAppElement extends Components.VikybAmbulanceWlApp, HTMLStencilElement {
+    }
+    var HTMLVikybAmbulanceWlAppElement: {
+        prototype: HTMLVikybAmbulanceWlAppElement;
+        new (): HTMLVikybAmbulanceWlAppElement;
+    };
     interface HTMLVikybAmbulanceWlEditorElementEventMap {
         "editor-closed": string;
     }
@@ -34,30 +50,53 @@ declare global {
         prototype: HTMLVikybAmbulanceWlEditorElement;
         new (): HTMLVikybAmbulanceWlEditorElement;
     };
+    interface HTMLVikybAmbulanceWlListElementEventMap {
+        "entry-clicked": string;
+    }
     interface HTMLVikybAmbulanceWlListElement extends Components.VikybAmbulanceWlList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVikybAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLVikybAmbulanceWlListElement, ev: VikybAmbulanceWlListCustomEvent<HTMLVikybAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVikybAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLVikybAmbulanceWlListElement, ev: VikybAmbulanceWlListCustomEvent<HTMLVikybAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLVikybAmbulanceWlListElement: {
         prototype: HTMLVikybAmbulanceWlListElement;
         new (): HTMLVikybAmbulanceWlListElement;
     };
     interface HTMLElementTagNameMap {
+        "vikyb-ambulance-wl-app": HTMLVikybAmbulanceWlAppElement;
         "vikyb-ambulance-wl-editor": HTMLVikybAmbulanceWlEditorElement;
         "vikyb-ambulance-wl-list": HTMLVikybAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
+    interface VikybAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath"?: string;
+    }
     interface VikybAmbulanceWlEditor {
         "entryId"?: string;
         "onEditor-closed"?: (event: VikybAmbulanceWlEditorCustomEvent<string>) => void;
     }
     interface VikybAmbulanceWlList {
+        "onEntry-clicked"?: (event: VikybAmbulanceWlListCustomEvent<string>) => void;
     }
 
+    interface VikybAmbulanceWlAppAttributes {
+        "basePath": string;
+    }
     interface VikybAmbulanceWlEditorAttributes {
         "entryId": string;
     }
 
     interface IntrinsicElements {
+        "vikyb-ambulance-wl-app": Omit<VikybAmbulanceWlApp, keyof VikybAmbulanceWlAppAttributes> & { [K in keyof VikybAmbulanceWlApp & keyof VikybAmbulanceWlAppAttributes]?: VikybAmbulanceWlApp[K] } & { [K in keyof VikybAmbulanceWlApp & keyof VikybAmbulanceWlAppAttributes as `attr:${K}`]?: VikybAmbulanceWlAppAttributes[K] } & { [K in keyof VikybAmbulanceWlApp & keyof VikybAmbulanceWlAppAttributes as `prop:${K}`]?: VikybAmbulanceWlApp[K] };
         "vikyb-ambulance-wl-editor": Omit<VikybAmbulanceWlEditor, keyof VikybAmbulanceWlEditorAttributes> & { [K in keyof VikybAmbulanceWlEditor & keyof VikybAmbulanceWlEditorAttributes]?: VikybAmbulanceWlEditor[K] } & { [K in keyof VikybAmbulanceWlEditor & keyof VikybAmbulanceWlEditorAttributes as `attr:${K}`]?: VikybAmbulanceWlEditorAttributes[K] } & { [K in keyof VikybAmbulanceWlEditor & keyof VikybAmbulanceWlEditorAttributes as `prop:${K}`]?: VikybAmbulanceWlEditor[K] };
         "vikyb-ambulance-wl-list": VikybAmbulanceWlList;
     }
@@ -66,6 +105,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "vikyb-ambulance-wl-app": LocalJSX.IntrinsicElements["vikyb-ambulance-wl-app"] & JSXBase.HTMLAttributes<HTMLVikybAmbulanceWlAppElement>;
             "vikyb-ambulance-wl-editor": LocalJSX.IntrinsicElements["vikyb-ambulance-wl-editor"] & JSXBase.HTMLAttributes<HTMLVikybAmbulanceWlEditorElement>;
             "vikyb-ambulance-wl-list": LocalJSX.IntrinsicElements["vikyb-ambulance-wl-list"] & JSXBase.HTMLAttributes<HTMLVikybAmbulanceWlListElement>;
         }
