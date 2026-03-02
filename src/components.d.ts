@@ -6,10 +6,34 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface VikybAmbulanceWlEditor {
+        "entryId": string;
+    }
     interface VikybAmbulanceWlList {
     }
 }
+export interface VikybAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVikybAmbulanceWlEditorElement;
+}
 declare global {
+    interface HTMLVikybAmbulanceWlEditorElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLVikybAmbulanceWlEditorElement extends Components.VikybAmbulanceWlEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVikybAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLVikybAmbulanceWlEditorElement, ev: VikybAmbulanceWlEditorCustomEvent<HTMLVikybAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVikybAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLVikybAmbulanceWlEditorElement, ev: VikybAmbulanceWlEditorCustomEvent<HTMLVikybAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLVikybAmbulanceWlEditorElement: {
+        prototype: HTMLVikybAmbulanceWlEditorElement;
+        new (): HTMLVikybAmbulanceWlEditorElement;
+    };
     interface HTMLVikybAmbulanceWlListElement extends Components.VikybAmbulanceWlList, HTMLStencilElement {
     }
     var HTMLVikybAmbulanceWlListElement: {
@@ -17,13 +41,24 @@ declare global {
         new (): HTMLVikybAmbulanceWlListElement;
     };
     interface HTMLElementTagNameMap {
+        "vikyb-ambulance-wl-editor": HTMLVikybAmbulanceWlEditorElement;
         "vikyb-ambulance-wl-list": HTMLVikybAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
+    interface VikybAmbulanceWlEditor {
+        "entryId"?: string;
+        "onEditor-closed"?: (event: VikybAmbulanceWlEditorCustomEvent<string>) => void;
+    }
     interface VikybAmbulanceWlList {
     }
+
+    interface VikybAmbulanceWlEditorAttributes {
+        "entryId": string;
+    }
+
     interface IntrinsicElements {
+        "vikyb-ambulance-wl-editor": Omit<VikybAmbulanceWlEditor, keyof VikybAmbulanceWlEditorAttributes> & { [K in keyof VikybAmbulanceWlEditor & keyof VikybAmbulanceWlEditorAttributes]?: VikybAmbulanceWlEditor[K] } & { [K in keyof VikybAmbulanceWlEditor & keyof VikybAmbulanceWlEditorAttributes as `attr:${K}`]?: VikybAmbulanceWlEditorAttributes[K] } & { [K in keyof VikybAmbulanceWlEditor & keyof VikybAmbulanceWlEditorAttributes as `prop:${K}`]?: VikybAmbulanceWlEditor[K] };
         "vikyb-ambulance-wl-list": VikybAmbulanceWlList;
     }
 }
@@ -31,6 +66,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "vikyb-ambulance-wl-editor": LocalJSX.IntrinsicElements["vikyb-ambulance-wl-editor"] & JSXBase.HTMLAttributes<HTMLVikybAmbulanceWlEditorElement>;
             "vikyb-ambulance-wl-list": LocalJSX.IntrinsicElements["vikyb-ambulance-wl-list"] & JSXBase.HTMLAttributes<HTMLVikybAmbulanceWlListElement>;
         }
     }
