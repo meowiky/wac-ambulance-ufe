@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface VikybAmbulanceWlApp {
+        "ambulanceId": string;
+        "apiBase": string;
         /**
           * @default ""
          */
@@ -16,6 +18,8 @@ export namespace Components {
         "entryId": string;
     }
     interface VikybAmbulanceWlList {
+        "ambulanceId": string;
+        "apiBase": string;
     }
 }
 export interface VikybAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
@@ -75,6 +79,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface VikybAmbulanceWlApp {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         /**
           * @default ""
          */
@@ -85,20 +91,28 @@ declare namespace LocalJSX {
         "onEditor-closed"?: (event: VikybAmbulanceWlEditorCustomEvent<string>) => void;
     }
     interface VikybAmbulanceWlList {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         "onEntry-clicked"?: (event: VikybAmbulanceWlListCustomEvent<string>) => void;
     }
 
     interface VikybAmbulanceWlAppAttributes {
         "basePath": string;
+        "apiBase": string;
+        "ambulanceId": string;
     }
     interface VikybAmbulanceWlEditorAttributes {
         "entryId": string;
+    }
+    interface VikybAmbulanceWlListAttributes {
+        "apiBase": string;
+        "ambulanceId": string;
     }
 
     interface IntrinsicElements {
         "vikyb-ambulance-wl-app": Omit<VikybAmbulanceWlApp, keyof VikybAmbulanceWlAppAttributes> & { [K in keyof VikybAmbulanceWlApp & keyof VikybAmbulanceWlAppAttributes]?: VikybAmbulanceWlApp[K] } & { [K in keyof VikybAmbulanceWlApp & keyof VikybAmbulanceWlAppAttributes as `attr:${K}`]?: VikybAmbulanceWlAppAttributes[K] } & { [K in keyof VikybAmbulanceWlApp & keyof VikybAmbulanceWlAppAttributes as `prop:${K}`]?: VikybAmbulanceWlApp[K] };
         "vikyb-ambulance-wl-editor": Omit<VikybAmbulanceWlEditor, keyof VikybAmbulanceWlEditorAttributes> & { [K in keyof VikybAmbulanceWlEditor & keyof VikybAmbulanceWlEditorAttributes]?: VikybAmbulanceWlEditor[K] } & { [K in keyof VikybAmbulanceWlEditor & keyof VikybAmbulanceWlEditorAttributes as `attr:${K}`]?: VikybAmbulanceWlEditorAttributes[K] } & { [K in keyof VikybAmbulanceWlEditor & keyof VikybAmbulanceWlEditorAttributes as `prop:${K}`]?: VikybAmbulanceWlEditor[K] };
-        "vikyb-ambulance-wl-list": VikybAmbulanceWlList;
+        "vikyb-ambulance-wl-list": Omit<VikybAmbulanceWlList, keyof VikybAmbulanceWlListAttributes> & { [K in keyof VikybAmbulanceWlList & keyof VikybAmbulanceWlListAttributes]?: VikybAmbulanceWlList[K] } & { [K in keyof VikybAmbulanceWlList & keyof VikybAmbulanceWlListAttributes as `attr:${K}`]?: VikybAmbulanceWlListAttributes[K] } & { [K in keyof VikybAmbulanceWlList & keyof VikybAmbulanceWlListAttributes as `prop:${K}`]?: VikybAmbulanceWlList[K] };
     }
 }
 export { LocalJSX as JSX };
