@@ -54,6 +54,7 @@ export class VikybAmbulanceWlApp {
       <Host>
         { element === "editor"
         ? <vikyb-ambulance-wl-editor entry-id={entryId}
+            ambulance-id={this.ambulanceId} api-base={this.apiBase}
             oneditor-closed={ () => navigate("./list")} >
           </vikyb-ambulance-wl-editor>
         : <vikyb-ambulance-wl-list ambulance-id={this.ambulanceId} api-base={this.apiBase} 
