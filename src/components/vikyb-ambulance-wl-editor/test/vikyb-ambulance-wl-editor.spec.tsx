@@ -52,7 +52,7 @@ describe('vikyb-ambulance-wl-editor', () => {
 
     const page = await newSpecPage({
       components: [VikybAmbulanceWlEditor],
-      html: `<<pfx>-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></<pfx>-ambulance-wl-editor>`,
+      html: `<vikyb-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></vikyb-ambulance-wl-editor>`,
     });
 
     await delay(300);
@@ -71,7 +71,7 @@ describe('vikyb-ambulance-wl-editor', () => {
 
     const page = await newSpecPage({
       components: [VikybAmbulanceWlEditor],
-      html: `<<pfx>-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></<pfx>-ambulance-wl-editor>`,
+      html: `<vikyb-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></<vikyb-ambulance-wl-editor>`,
     });
 
     await delay(300);
